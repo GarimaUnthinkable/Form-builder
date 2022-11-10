@@ -1,0 +1,51 @@
+<div
+  class="container"
+  style="display: flex; border: 5px; color: black; padding: 100px"
+>
+  <div cdkDropListGroup>
+    <div class="example-container">
+      <h2>Components</h2>
+
+      <div style="margin-top: 100px">
+        <div
+          cdkDropList
+          cdkDragData
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListData]="components"
+          class="example-list"
+          cdkDropListSortingDisabled
+        >
+          <div class="example-box" *ngFor="let item of components" cdkDrag>
+            {{ item.tittle }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Form</h2>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="form"
+        class="example-list1"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="example-box1" *ngFor="let item of form" cdkDrag>
+          <input type="item.inputType" placeholder="item.placeHolder" />
+          <button [type]="item.inputType" *ngIf="item.type === button">
+            {{ item.placeHolder }}
+          </button>
+          <div>
+            <button mat-raised-button>
+              <mat-icon color="primary" (click)="edit()">edit</mat-icon>
+            </button>
+            <button style="margin-left: 10px" mat-raised-button>
+              <mat-icon color="warn" (click)="remove(item)">delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
