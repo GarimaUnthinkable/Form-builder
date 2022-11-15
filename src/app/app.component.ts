@@ -146,7 +146,7 @@ export class AppComponent {
   templateUrl: 'app-box.html'
 })
 export class AppBox {
-  label: string | undefined;
+  label: any;
   constructor(
     public dialogRef: MatDialogRef<AppBox>,
     @Inject(MAT_DIALOG_DATA) public data: data
