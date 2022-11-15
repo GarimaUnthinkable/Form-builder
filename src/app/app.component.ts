@@ -143,7 +143,7 @@ export class AppComponent {
 
 @Component({
   selector: 'app-box',
-  templateUrl: './app/app-box.html'
+  templateUrl: 'app-box.html'
 })
 export class AppBox {
   label: string | undefined;
