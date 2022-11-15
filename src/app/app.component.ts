@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   CdkDragDrop,
   copyArrayItem,
   moveItemInArray,
 } from '@angular/cdk/drag-drop';
-import { MatDialog } from '@angular/material/dialog';
-import { BoxComponent } from './box/box.component';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 
+export interface data {
+  label: any;
+}
 @Component({
   styles: [
     `
@@ -32,47 +38,46 @@ import { BoxComponent } from './box/box.component';
 })
 export class AppComponent {
   title = 'dragger';
+  label: any;
+
+  constructor(public dialog: MatDialog) {}
 
   components: any[] = [
     {
       tittle: 'Text',
       type: 'input-text',
       inputType: 'text',
-      placeHolder: '',
+      label: '',
     },
     {
       tittle: 'Password',
       type: 'input-password',
       inputType: 'password',
-      placeHolder: '',
+      label: '',
     },
     {
       tittle: 'Number',
       type: 'input-number',
       inputType: 'number',
-      placeHolder: '',
+      label: '',
     },
     {
       tittle: 'Check Box',
       type: 'input-check',
       inputType: 'checkBox',
-      placeHolder: null,
+      label: '',
       displayText: 'Check box',
     },
     {
       tittle: 'Button',
       type: 'input-button',
       inputType: 'button',
-      placeHolder: '',
+      label: '',
     },
   ];
-  placeHolder: any;
-
-  constructor(public dialog: MatDialog) {}
 
   form: any[] = [];
   button = this.components[4];
-  placeholder: any;
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -106,23 +111,48 @@ export class AppComponent {
     ) {
       return (
         '<input type="' +
-        html.inputType +
+        this.components[html].inputType +
         '" placeholder= "' +
-        html.placeholder +
+        this.components[html].label +
         '"/>'
       );
     } else {
       return (
         '<button type="' +
-        html.inputType +
+        this.components[html].inputType +
         '"> "' +
-        html.placeholder +
+        this.components[html].label +
         '"</button>'
       );
     }
   }
 
   edit() {
-    const dialogRef = this.dialog.open(BoxComponent)
+    const ref = this.dialog.open(AppBox, {
+      width: '500px',
+      data: {
+        label: this.label,
+      },
+    });
+    ref.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      this.label = result;
+    });
+  }
+}
+
+@Component({
+  selector: 'app-box',
+  templateUrl: './app/app-box.html'
+})
+export class AppBox {
+  label: string | undefined;
+  constructor(
+    public dialogRef: MatDialogRef<AppBox>,
+    @Inject(MAT_DIALOG_DATA) public data: data
+  ) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }
