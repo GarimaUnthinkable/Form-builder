@@ -32,16 +32,34 @@
         (cdkDropListDropped)="drop($event)"
       >
         <div class="example-box1" *ngFor="let index of form" cdkDrag>
-          <label for="label" *ngIf="label">{{ label }}</label>
-          <input [type]="index.inputType" [placeholder]="index.label" />
-          <button
-            [type]="index.inputType"
-            *ngIf="index.type === button && label"
+          <div
+            class="container"
+            style="display: flex; border: 5px; color: black; padding: 5pxpx"
           >
-            {{ label }}
-          </button>
+            <div>
+              <input
+                type="{{ index.inputType }}"
+                *ngIf="index.inputType != 'button'"
+                placeholder="{{ index.label }}"
+              />
+            </div>
+            <div>
+              <label *ngIf="index.inputType == 'checkBox'" for="">{{
+                index.label
+              }}</label>
+            </div>
+            <div>
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="index.inputType == 'button'"
+              >
+                {{ index.label }}
+              </button>
+            </div>
+          </div>
           <div>
-            <button mat-raised-button (click)="edit()">
+            <button mat-raised-button (click)="edit(index)">
               <mat-icon color="primary">edit</mat-icon>
             </button>
             <button style="margin-left: 10px" mat-raised-button>

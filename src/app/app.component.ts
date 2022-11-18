@@ -1,18 +1,16 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject } from "@angular/core";
 import {
   CdkDragDrop,
   copyArrayItem,
   moveItemInArray,
-} from '@angular/cdk/drag-drop';
+} from "@angular/cdk/drag-drop";
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+} from "@angular/material/dialog";
+import { DialogComponent } from "./dialog/dialog.component";
 
-export interface data {
-  label: any;
-}
 @Component({
   styles: [
     `
@@ -32,47 +30,47 @@ export interface data {
       }
     `,
   ],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  title = 'dragger';
+  title = "dragger";
   label: any;
 
   constructor(public dialog: MatDialog) {}
 
   components: any[] = [
     {
-      tittle: 'Text',
-      type: 'input-text',
-      inputType: 'text',
-      label: '',
+      tittle: "Text",
+      type: "input-text",
+      inputType: "text",
+      label: "text",
     },
     {
-      tittle: 'Password',
-      type: 'input-password',
-      inputType: 'password',
-      label: '',
+      tittle: "Password",
+      type: "input-password",
+      inputType: "password",
+      label: "password",
     },
     {
-      tittle: 'Number',
-      type: 'input-number',
-      inputType: 'number',
-      label: '',
+      tittle: "Number",
+      type: "input-number",
+      inputType: "number",
+      label: "number",
     },
     {
-      tittle: 'Check Box',
-      type: 'input-check',
-      inputType: 'checkBox',
-      label: '',
-      displayText: 'Check box',
+      tittle: "Check Box",
+      type: "input-check",
+      inputType: "checkBox",
+      label: "check-box",
+      displayText: "Check box",
     },
     {
-      tittle: 'Button',
-      type: 'input-button',
-      inputType: 'button',
-      label: '',
+      tittle: "Button",
+      type: "input-button",
+      inputType: "button",
+      label: "button",
     },
   ];
 
@@ -104,10 +102,10 @@ export class AppComponent {
 
   type(html: any) {
     if (
-      html.inputType === 'text' ||
-      html.inputType === 'password' ||
-      html.inputType === 'number' ||
-      html.inputType === 'checkBox'
+      html.inputType === "text" ||
+      html.inputType === "password" ||
+      html.inputType === "number" ||
+      html.inputType === "checkBox"
     ) {
       return (
         '<input type="' +
@@ -127,32 +125,18 @@ export class AppComponent {
     }
   }
 
-  edit() {
-    const ref = this.dialog.open(AppBox, {
-      width: '500px',
+  edit(index: any) {
+    debugger
+    let value = index;
+    const ref = this.dialog.open(DialogComponent, {
+      width: "500px",
       data: {
-        label: this.label,
+        label: value.label,
       },
     });
     ref.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      this.label = result;
+      console.log(result);
+      console.log("The dialog was closed");
     });
-  }
-}
-
-@Component({
-  selector: 'app-box',
-  templateUrl: 'app-box.html'
-})
-export class AppBox {
-  label: any;
-  constructor(
-    public dialogRef: MatDialogRef<AppBox>,
-    @Inject(MAT_DIALOG_DATA) public data: data
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 }
