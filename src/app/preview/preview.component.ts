@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PreviewComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
+
+  form: any[] = [];
 
   ngOnInit(): void {
   }

@@ -43,7 +43,7 @@
                 placeholder="{{ index.label }}"
               />
             </div>
-            <div>
+            <div style="margin-left: 5px;">
               <label *ngIf="index.inputType == 'checkBox'" for="">{{
                 index.label
               }}</label>
@@ -58,33 +58,33 @@
               </button>
             </div>
           </div>
-          <div>
-            <button mat-raised-button (click)="edit(index)">
+          <div class="container">
+            <button mat-button (click)="edit(index)">
               <mat-icon color="primary">edit</mat-icon>
             </button>
-            <button style="margin-left: 10px" mat-raised-button>
+            <button style="margin-left: 5px" mat-button>
               <mat-icon color="warn" (click)="remove(index)">delete</mat-icon>
             </button>
           </div>
         </div>
+        <button
+        mat-raised-button
+        color="primary"
+        routerLink="/preview"
+        style="width: 90px; height: 40px; margin-left: 300px; margin-top: 420px;"
+      >
+        Save
+      </button>
       </div>
     </div>
     <div class="container">
       <button
         mat-raised-button
         color="primary"
-        routerLink="/preview"
+        routerLink="/save"
         style="width: 90px; height: 40px; margin-left: 930px"
       >
-        Preview
-      </button>
-      <button
-        mat-raised-button
-        color="primary"
-        routerLink="/save"
-        style="width: 90px; height: 40px; margin-left: 15px"
-      >
-        Save
+        All forms
       </button>
     </div>
   </div>
