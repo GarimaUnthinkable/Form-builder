@@ -1,0 +1,91 @@
+<div
+  class="container"
+  style="display: flex; border: 5px; color: black; padding: 40px"
+>
+  <div cdkDropListGroup>
+    <div class="example-container">
+      <h2>Components</h2>
+
+      <div style="margin-top: 100px">
+        <div
+          cdkDropList
+          cdkDragData
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListData]="components"
+          class="example-list"
+          cdkDropListSortingDisabled
+        >
+          <div class="example-box" *ngFor="let item of components" cdkDrag>
+            {{ item.tittle }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Form</h2>
+
+      <div
+        cdkDropList
+        [cdkDropListData]="form"
+        class="example-list1"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="example-box1" *ngFor="let index of form" cdkDrag>
+          <div
+            class="container"
+            style="display: flex; border: 5px; color: black; padding: 5px"
+          >
+            <div>
+              <input
+                type="{{ index.inputType }}"
+                *ngIf="index.inputType != 'button'"
+                placeholder="{{ index.label }}"
+              />
+            </div>
+            <div>
+              <label *ngIf="index.inputType == 'checkBox'" for="">{{
+                index.label
+              }}</label>
+            </div>
+            <div>
+              <button
+                mat-raised-button
+                color="primary"
+                *ngIf="index.inputType == 'button'"
+              >
+                {{ index.label }}
+              </button>
+            </div>
+          </div>
+          <div>
+            <button mat-raised-button (click)="edit(index)">
+              <mat-icon color="primary">edit</mat-icon>
+            </button>
+            <button style="margin-left: 10px" mat-raised-button>
+              <mat-icon color="warn" (click)="remove(index)">delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <button
+        mat-raised-button
+        color="primary"
+        routerLink="/preview"
+        style="width: 90px; height: 40px; margin-left: 930px"
+      >
+        Preview
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        routerLink="/save"
+        style="width: 90px; height: 40px; margin-left: 15px"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>

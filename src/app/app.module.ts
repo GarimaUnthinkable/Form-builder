@@ -11,9 +11,21 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { DialogComponent } from './dialog/dialog.component';
 import { FormsModule } from '@angular/forms';
+import { PreviewComponent } from './preview/preview.component';
+import {RouterModule, Routes} from '@angular/router';
+import { NewFormComponent } from './new-form/new-form.component';
+import { SaveComponent } from './save/save.component';
+
+let routes: Routes = [
+  {path:'', component:NewFormComponent},
+  {path:'new-form', component: NewFormComponent},
+  {path:'preview', component: PreviewComponent},
+  {path:'save', component: SaveComponent}
+]
 @NgModule({
-  declarations: [AppComponent, DialogComponent],
+  declarations: [AppComponent, DialogComponent, PreviewComponent, NewFormComponent, SaveComponent],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     BrowserAnimationsModule,
     DragDropModule,
