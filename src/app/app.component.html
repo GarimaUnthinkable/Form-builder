@@ -34,12 +34,12 @@
         <div class="example-box1" *ngFor="let index of form" cdkDrag>
           <div
             class="container"
-            style="display: flex; border: 5px; color: black; padding: 5pxpx"
+            style="display: flex; border: 5px; color: black; padding: 5px"
           >
             <div>
               <input
                 type="{{ index.inputType }}"
-                *ngIf="index.inputType != 'button'"
+                *ngIf="(index.inputType != 'button')"
                 placeholder="{{ index.label }}"
               />
             </div>

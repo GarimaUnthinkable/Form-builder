@@ -1,24 +1,27 @@
-<!-- <div style="text-align: center">
-  <form>
-    <label>Label</label>
-    <input placeholder="label" />
-  </form>
-</div>
-<div>
-  <button (click)="onNoClick()">Cancel</button>
-  <button cdkFocusInitial>Save</button>
-</div> -->
-
-<h1 style="text-align: center">Form Inputs</h1>
-<div mat-dialog-content>
-  <mat-form-field form="label" appearance="fill">
-    <mat-label style="text-align: center" for="label">Label</mat-label>
-    <input matInput id="label" name="label" />
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-raised-button (click)="onNoClick()" color="warn">Cancel</button>
-  <button mat-raised-button [mat-dialog-close]="data.label" color="primary" cdkFocusInitial>
-    Save
-  </button>
+<div
+  class="container"
+  style="display: flex; border: 5px; color: black; margin-left: 120px"
+>
+  <div>
+    <h1 style="text-align: center">Form Inputs</h1>
+    <div mat-dialog-content>
+      <mat-form-field>
+        <mat-label style="text-align: center" for="data.label">Label</mat-label>
+        <input id="label" matInput [(ngModel)]="data.label" />
+      </mat-form-field>
+    </div>
+    <div style="margin-left: 30px" mat-dialog-actions>
+      <button mat-raised-button (click)="onNoClick()" color="warn">
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        [mat-dialog-close]="data.label"
+        color="primary"
+        cdkFocusInitial
+      >
+        Save
+      </button>
+    </div>
+  </div>
 </div>

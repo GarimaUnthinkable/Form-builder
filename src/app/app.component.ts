@@ -4,13 +4,9 @@ import {
   copyArrayItem,
   moveItemInArray,
 } from "@angular/cdk/drag-drop";
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from "@angular/material/dialog";
+import { MatDialog } from "@angular/material/dialog";
 import { DialogComponent } from "./dialog/dialog.component";
-
+import { data } from "./dialog/dialog.component";
 @Component({
   styles: [
     `
@@ -36,7 +32,6 @@ import { DialogComponent } from "./dialog/dialog.component";
 })
 export class AppComponent {
   title = "dragger";
-  label: any;
 
   constructor(public dialog: MatDialog) {}
 
@@ -126,15 +121,15 @@ export class AppComponent {
   }
 
   edit(index: any) {
-    debugger
-    let value = index;
     const ref = this.dialog.open(DialogComponent, {
       width: "500px",
       data: {
-        label: value.label,
+        label: index.label,
       },
     });
     ref.afterClosed().subscribe((result) => {
+      index.label = result;
+      this.form.splice(index.label, result)
       console.log(result);
       console.log("The dialog was closed");
     });
