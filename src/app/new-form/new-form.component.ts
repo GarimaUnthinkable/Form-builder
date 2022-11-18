@@ -50,7 +50,7 @@ export class NewFormComponent implements OnInit {
     },
   ];
 
-  form: any[] = [];
+  element: any[] = [];
   button = this.components[4];
 
   drop(event: CdkDragDrop<string[]>) {
@@ -71,9 +71,9 @@ export class NewFormComponent implements OnInit {
   }
 
   remove(index: any) {
-    let val = this.form.indexOf(index);
+    let val = this.element.indexOf(index);
     console.log(val);
-    this.form.splice(val, 1);
+    this.element.splice(val, 1);
   }
 
   type(html: any) {
@@ -110,7 +110,7 @@ export class NewFormComponent implements OnInit {
     });
     ref.afterClosed().subscribe((result) => {
       index.label = result;
-      this.form.splice(index.label, result)
+      this.element.splice(index.label, result)
       console.log(result);
       console.log("The dialog was closed");
     });

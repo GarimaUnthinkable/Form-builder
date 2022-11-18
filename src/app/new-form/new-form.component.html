@@ -27,11 +27,11 @@
 
       <div
         cdkDropList
-        [cdkDropListData]="form"
+        [cdkDropListData]="element"
         class="example-list1"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="example-box1" *ngFor="let index of form" cdkDrag>
+        <div class="example-box1" *ngFor="let index of element" cdkDrag>
           <div
             class="container"
             style="display: flex; border: 5px; color: black; padding: 5px"
