@@ -16,7 +16,7 @@
           cdkDropListSortingDisabled
         >
           <div class="example-box" *ngFor="let item of components" cdkDrag>
-            {{ item.tittle }}
+            <div *ngIf="components[0]">{{ item.tittle }}</div>
           </div>
         </div>
       </div>
@@ -67,7 +67,15 @@
             </button>
           </div>
         </div>
+        <input
+        [(ngModel)]="name"
+          type="text"
+          style="margin-left: 250px; margin-top: 10px"
+          placeholder="Name your form"
+        />
         <button
+        *ngIf="name"
+        required
           mat-raised-button
           (click)="save()"
           color="primary"
@@ -75,7 +83,7 @@
             width: 90px;
             height: 40px;
             margin-left: 300px;
-            margin-top: 420px;
+            margin-top: 10px;
           "
         >
           Save
@@ -88,11 +96,7 @@
           mat-raised-button
           color="primary"
           routerLink="/save"
-          style="
-            width: 90px;
-            height: 40px;
-            margin-left: 999px;
-          "
+          style="width: 90px; height: 40px; margin-left: 999px"
         >
           All forms
         </button>

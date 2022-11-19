@@ -16,7 +16,7 @@ import { ServerService } from "../services/server.service";
 export class NewFormComponent implements OnInit {
   constructor(public dialog: MatDialog, public server: ServerService) {}
 
-  components: any[] = [{name: 'Name the Form'},
+  components: any[] = [
     {
       tittle: "Text",
       type: "input-text",
@@ -36,12 +36,6 @@ export class NewFormComponent implements OnInit {
       label: "number",
     },
     {
-      tittle: "Email",
-      type: "email",
-      inputType: "email",
-      label: "email",
-    },
-    {
       tittle: "Check Box",
       type: "input-check",
       inputType: "checkBox",
@@ -56,6 +50,8 @@ export class NewFormComponent implements OnInit {
     },
   ];
 
+  obj:any = {};
+  name: any;
   element: any[] = [];
   button = this.components[4];
 
@@ -123,12 +119,13 @@ export class NewFormComponent implements OnInit {
   }
 
   save() {
-    this.element = this.element;
+    this.element = this.obj;
+    this.name = this.obj;
 
-    this.server.postUser(this.element).subscribe((res) => {
+    this.server.postUser(this.obj).subscribe((res) => {
+      alert("Form added.");
       console.log(res);
     });
   }
-
   ngOnInit(): void {}
 }
