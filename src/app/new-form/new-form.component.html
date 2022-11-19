@@ -1,6 +1,6 @@
 <div
   class="container"
-  style="display: flex; border: 5px; color: black; padding: 20px"
+  style="display: flex; border: 5px; color: black; padding: 40px"
 >
   <div cdkDropListGroup>
     <div class="example-container">
@@ -16,7 +16,7 @@
           cdkDropListSortingDisabled
         >
           <div class="example-box" *ngFor="let item of components" cdkDrag>
-            <div *ngIf="components[0]">{{ item.tittle }}</div>
+            {{ item.tittle }}
           </div>
         </div>
       </div>
@@ -68,14 +68,18 @@
           </div>
         </div>
         <input
-        [(ngModel)]="name"
+          id="name"
+          matInput
+          color="accent"
+          [(ngModel)]="name"
           type="text"
           style="margin-left: 250px; margin-top: 10px"
           placeholder="Name your form"
         />
+
         <button
-        *ngIf="name"
-        required
+          *ngIf="name"
+          required
           mat-raised-button
           (click)="save()"
           color="primary"
@@ -91,16 +95,14 @@
       </div>
     </div>
     <div class="container">
-      <div class="example-container">
-        <button
-          mat-raised-button
-          color="primary"
-          routerLink="/save"
-          style="width: 90px; height: 40px; margin-left: 999px"
-        >
-          All forms
-        </button>
-      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        routerLink="/save"
+        style="width: 90px; height: 40px; margin-left: 930px"
+      >
+        All forms
+      </button>
     </div>
   </div>
 </div>

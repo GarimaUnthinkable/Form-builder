@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ServerService } from "../services/server.service";
 
@@ -7,15 +8,13 @@ import { ServerService } from "../services/server.service";
   styleUrls: ["./preview.component.css"],
 })
 export class PreviewComponent implements OnInit {
-  constructor(public server: ServerService) {}
+  constructor(public server: ServerService, public http: HttpClient) {}
 
   element: any[] = [];
-  preview:any;
 
   getForm() {
     this.server.getUser().subscribe((res) => {
       console.log(res);
-      this.preview = res;
     });
   }
 

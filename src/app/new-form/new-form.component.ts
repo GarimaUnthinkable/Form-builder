@@ -16,7 +16,7 @@ import { ServerService } from "../services/server.service";
 export class NewFormComponent implements OnInit {
   constructor(public dialog: MatDialog, public server: ServerService) {}
 
-  components: any[] = [
+  components: any = [
     {
       tittle: "Text",
       type: "input-text",
@@ -36,6 +36,12 @@ export class NewFormComponent implements OnInit {
       label: "number",
     },
     {
+      tittle: "Email",
+      type: "email",
+      inputType: "email",
+      label: "email",
+    },
+    {
       tittle: "Check Box",
       type: "input-check",
       inputType: "checkBox",
@@ -49,10 +55,9 @@ export class NewFormComponent implements OnInit {
       label: "button",
     },
   ];
-
-  obj:any = {};
-  name: any;
-  element: any[] = [];
+  name:any;
+  obj = {};
+  element: any = [];
   button = this.components[4];
 
   drop(event: CdkDragDrop<string[]>) {
@@ -113,19 +118,18 @@ export class NewFormComponent implements OnInit {
     ref.afterClosed().subscribe((result) => {
       index.label = result;
       this.element.splice(index.label, result);
-      console.log(result);
-      console.log("The dialog was closed");
     });
   }
 
   save() {
-    this.element = this.obj;
-    this.name = this.obj;
+    let newObj = {"formData" : this.element, "formName" : this.name}
+    this.obj = newObj;
+    console.log(this.obj);
 
     this.server.postUser(this.obj).subscribe((res) => {
-      alert("Form added.");
-      console.log(res);
+      return res;
     });
   }
+
   ngOnInit(): void {}
 }

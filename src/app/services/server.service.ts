@@ -10,7 +10,7 @@ export class ServerService {
   constructor(private http: HttpClient) {}
 
   postUser(store: any) {
-    return this.http.post<any>('http://localhost:3000/forms', store).pipe(
+    return this.http.post<any>('http://localhost:4000/forms', store).pipe(
       map((response: any) => {
         return response;
       })
@@ -18,7 +18,7 @@ export class ServerService {
   }
 
   getUser() {
-    return this.http.get<any>('http://localhost:3000/forms').pipe(
+    return this.http.get<any>('http://localhost:4000/forms').pipe(
       map((response: any) => {
         return response;
       })
@@ -26,7 +26,7 @@ export class ServerService {
   }
 
   updateUser(store: any, id: any) {
-    return this.http.put<any>('http://localhost:3000/forms' + id, store).pipe(
+    return this.http.put<any>('http://localhost:4000/forms' + id, store).pipe(
       map((response: any) => {
         return response;
       })
@@ -34,7 +34,7 @@ export class ServerService {
   }
 
   deleteUser(id: any) {
-    return this.http.delete<any>('http://localhost:3000/forms' + id).pipe(
+    return this.http.delete<any>('http://localhost:4000/forms' + id).pipe(
       map((response: any) => {
         return response;
       })
