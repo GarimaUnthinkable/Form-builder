@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService {
+export class ServerService {
 
   constructor(private http: HttpClient) {}
 

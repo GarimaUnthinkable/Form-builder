@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaveComponent implements OnInit {
 
+  list:any = [];
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,22 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import {
   CdkDragDrop,
   copyArrayItem,
   moveItemInArray,
 } from "@angular/cdk/drag-drop";
 import { MatDialog } from "@angular/material/dialog";
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogComponent } from "../dialog/dialog.component";
+import { ServerService } from "../services/server.service";
 
 @Component({
-  selector: 'app-new-form',
-  templateUrl: './new-form.component.html',
-  styleUrls: ['./new-form.component.css']
+  selector: "app-new-form",
+  templateUrl: "./new-form.component.html",
+  styleUrls: ["./new-form.component.css"],
 })
 export class NewFormComponent implements OnInit {
+  constructor(public dialog: MatDialog, public server: ServerService) {}
 
-  constructor(public dialog: MatDialog) {}
-
-  components: any[] = [
+  components: any[] = [{name: 'Name the Form'},
     {
       tittle: "Text",
       type: "input-text",
@@ -34,6 +34,12 @@ export class NewFormComponent implements OnInit {
       type: "input-number",
       inputType: "number",
       label: "number",
+    },
+    {
+      tittle: "Email",
+      type: "email",
+      inputType: "email",
+      label: "email",
     },
     {
       tittle: "Check Box",
@@ -110,13 +116,19 @@ export class NewFormComponent implements OnInit {
     });
     ref.afterClosed().subscribe((result) => {
       index.label = result;
-      this.element.splice(index.label, result)
+      this.element.splice(index.label, result);
       console.log(result);
       console.log("The dialog was closed");
     });
   }
 
-  ngOnInit(): void {
+  save() {
+    this.element = this.element;
+
+    this.server.postUser(this.element).subscribe((res) => {
+      console.log(res);
+    });
   }
 
+  ngOnInit(): void {}
 }

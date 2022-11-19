@@ -1,6 +1,6 @@
 <div
   class="container"
-  style="display: flex; border: 5px; color: black; padding: 40px"
+  style="display: flex; border: 5px; color: black; padding: 20px"
 >
   <div cdkDropListGroup>
     <div class="example-container">
@@ -43,7 +43,7 @@
                 placeholder="{{ index.label }}"
               />
             </div>
-            <div style="margin-left: 5px;">
+            <div style="margin-left: 5px">
               <label *ngIf="index.inputType == 'checkBox'" for="">{{
                 index.label
               }}</label>
@@ -68,24 +68,35 @@
           </div>
         </div>
         <button
-        mat-raised-button
-        color="primary"
-        routerLink="/preview"
-        style="width: 90px; height: 40px; margin-left: 300px; margin-top: 420px;"
-      >
-        Save
-      </button>
+          mat-raised-button
+          (click)="save()"
+          color="primary"
+          style="
+            width: 90px;
+            height: 40px;
+            margin-left: 300px;
+            margin-top: 420px;
+          "
+        >
+          Save
+        </button>
       </div>
     </div>
     <div class="container">
-      <button
-        mat-raised-button
-        color="primary"
-        routerLink="/save"
-        style="width: 90px; height: 40px; margin-left: 930px"
-      >
-        All forms
-      </button>
+      <div class="example-container">
+        <button
+          mat-raised-button
+          color="primary"
+          routerLink="/save"
+          style="
+            width: 90px;
+            height: 40px;
+            margin-left: 999px;
+          "
+        >
+          All forms
+        </button>
+      </div>
     </div>
   </div>
 </div>

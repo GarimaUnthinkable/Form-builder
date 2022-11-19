@@ -15,6 +15,8 @@ import { PreviewComponent } from './preview/preview.component';
 import {RouterModule, Routes} from '@angular/router';
 import { NewFormComponent } from './new-form/new-form.component';
 import { SaveComponent } from './save/save.component';
+import { ServerService } from './services/server.service';
+import { HttpClientModule } from '@angular/common/http';
 
 let routes: Routes = [
   {path:'', component:NewFormComponent},
@@ -34,9 +36,10 @@ let routes: Routes = [
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  // providers: [ServerService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

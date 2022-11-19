@@ -1,3 +1,50 @@
 {
-  "forms": []
+  "forms": [
+    [
+      {
+        "tittle": "Text",
+        "type": "input-text",
+        "inputType": "text",
+        "label": "Username"
+      },
+      {
+        "tittle": "Password",
+        "type": "input-password",
+        "inputType": "password",
+        "label": "Password"
+      },
+      {
+        "tittle": "Button",
+        "type": "input-button",
+        "inputType": "button",
+        "label": "Submit"
+      }
+    ],
+    [
+      {
+        "tittle": "Text",
+        "type": "input-text",
+        "inputType": "text",
+        "label": "Name"
+      },
+      {
+        "tittle": "Email",
+        "type": "email",
+        "inputType": "email",
+        "label": "Email"
+      },
+      {
+        "tittle": "Password",
+        "type": "input-password",
+        "inputType": "password",
+        "label": "Password"
+      },
+      {
+        "tittle": "Button",
+        "type": "input-button",
+        "inputType": "button",
+        "label": "Submit"
+      }
+    ]
+  ]
 }
