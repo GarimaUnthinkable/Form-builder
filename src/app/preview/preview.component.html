@@ -8,7 +8,7 @@
     </h2>
 
     <div class="example-list1">
-      <div class="example-box1" *ngFor="let index of element">
+      <div class="example-box1" *ngFor="let index of elements">
         <div
           class="container"
           style="display: flex; border: 5px; color: black; padding: 5px"
@@ -46,6 +46,14 @@
       >
         Edit
       </button>
+      <button
+      mat-raised-button
+      color="primary"
+      routerLink="/save"
+      style="width: 90px; height: 40px; margin-left: 1000px; margin-top: 10px"
+    >
+      All forms
+    </button>
     </div>
   </div>
 </div>

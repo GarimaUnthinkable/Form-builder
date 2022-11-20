@@ -10,12 +10,10 @@ import { ServerService } from "../services/server.service";
 export class PreviewComponent implements OnInit {
   constructor(public server: ServerService, public http: HttpClient) {}
 
-  element: any[] = [];
+  elements: any[] = [];
 
   getForm() {
-    this.server.getUser().subscribe((res) => {
-      console.log(res);
-    });
+    // this.server.preview()
   }
 
   ngOnInit(): void {}

@@ -30,42 +30,17 @@
           "tittle": "Text",
           "type": "input-text",
           "inputType": "text",
-          "label": "name"
-        },
-        {
-          "tittle": "Number",
-          "type": "input-number",
-          "inputType": "number",
-          "label": "contact"
-        },
-        {
-          "tittle": "Email",
-          "type": "email",
-          "inputType": "email",
-          "label": "email"
+          "label": "Username"
         },
         {
           "tittle": "Password",
           "type": "input-password",
           "inputType": "password",
-          "label": "password"
-        },
-        {
-          "tittle": "Check Box",
-          "type": "input-check",
-          "inputType": "checkBox",
-          "label": "verify",
-          "displayText": "Check box"
-        },
-        {
-          "tittle": "Button",
-          "type": "input-button",
-          "inputType": "button",
-          "label": "submit"
+          "label": "Password"
         }
       ],
-      "formName": "example",
-      "id": 2
+      "formName": "Login",
+      "id": 3
     }
   ]
 }

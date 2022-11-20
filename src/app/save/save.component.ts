@@ -14,7 +14,6 @@ export class SaveComponent implements OnInit {
 
   getDetails() {
     this.server.getUser().subscribe((res) => {
-      console.log(res);
       this.list = res;
     });
   }
@@ -28,13 +27,9 @@ export class SaveComponent implements OnInit {
     this.getDetails();
   }
 
-  getId(index:any) {
-    this.http
-    .get<any>(`http://localhost:4000/forms/${index.id}`)
-    .subscribe((res) => {
-      return res;
-    });
-  this.getDetails();
+  formId(index: any) {
+    this.server.preview(index)
+    this.getDetails();
   }
 
   ngOnInit(): void {
