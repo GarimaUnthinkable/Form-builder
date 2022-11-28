@@ -16,6 +16,8 @@ import {RouterModule, Routes} from '@angular/router';
 import { NewFormComponent } from './new-form/new-form.component';
 import { SaveComponent } from './save/save.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormComponent } from './form/form.component';
+import { DeleteComponent } from './delete/delete.component';
 
 let routes: Routes = [
   {path:'', component:NewFormComponent},
@@ -24,7 +26,7 @@ let routes: Routes = [
   {path:'save', component: SaveComponent}
 ]
 @NgModule({
-  declarations: [AppComponent, DialogComponent, PreviewComponent, NewFormComponent, SaveComponent],
+  declarations: [AppComponent, DialogComponent, PreviewComponent, NewFormComponent, SaveComponent, FormComponent, DeleteComponent],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,

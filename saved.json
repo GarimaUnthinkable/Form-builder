@@ -3,6 +3,12 @@
     {
       "formData": [
         {
+          "tittle": "Text",
+          "type": "input-text",
+          "inputType": "text",
+          "label": "text"
+        },
+        {
           "tittle": "Email",
           "type": "email",
           "inputType": "email",
@@ -15,32 +21,21 @@
           "label": "password"
         },
         {
+          "tittle": "Check Box",
+          "type": "input-check",
+          "inputType": "checkBox",
+          "label": "check-box",
+          "displayText": "Check box"
+        },
+        {
           "tittle": "Button",
           "type": "input-button",
           "inputType": "button",
-          "label": "Submit"
+          "label": "button"
         }
       ],
-      "formName": "Form example",
-      "id": 1
-    },
-    {
-      "formData": [
-        {
-          "tittle": "Text",
-          "type": "input-text",
-          "inputType": "text",
-          "label": "Username"
-        },
-        {
-          "tittle": "Password",
-          "type": "input-password",
-          "inputType": "password",
-          "label": "Password"
-        }
-      ],
-      "formName": "Login",
-      "id": 3
+      "formName": "test2",
+      "id": 2
     }
   ]
 }

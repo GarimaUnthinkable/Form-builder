@@ -67,7 +67,21 @@
             </button>
           </div>
         </div>
-        <input
+        <button
+          mat-raised-button
+          required
+          (click)="save()"
+          color="primary"
+          style="
+            width: 90px;
+            height: 40px;
+            margin-left: 300px;
+            margin-top: 10px;
+          "
+        >
+          Save
+        </button>
+        <!-- <input
           id="name"
           matInput
           color="accent"
@@ -91,7 +105,7 @@
           "
         >
           Save
-        </button>
+        </button> -->
       </div>
     </div>
     <div class="container">

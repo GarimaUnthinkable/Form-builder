@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ServerService } from "../services/server.service";
 
 @Component({
@@ -8,13 +9,28 @@ import { ServerService } from "../services/server.service";
   styleUrls: ["./preview.component.css"],
 })
 export class PreviewComponent implements OnInit {
-  constructor(public server: ServerService, public http: HttpClient) {}
+  constructor(
+    public server: ServerService,
+    public http: HttpClient,
+    public route: ActivatedRoute,
+    public router: Router
+  ) {}
 
-  elements: any[] = [];
+  elements: any;
+  id: any;
 
-  getForm() {
-    // this.server.preview()
+  getInput() {
+    this.route.queryParams.subscribe((res) => {
+      this.id = res["val"];
+    });
+    this.http
+      .get<any>(`http://localhost:4000/forms/${this.id}`)
+      .subscribe((data) => {
+        this.elements = data["formData"];
+      });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getInput();
+  }
 }

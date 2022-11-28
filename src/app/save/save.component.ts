@@ -1,5 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { MatDialog } from "@angular/material/dialog";
+import { Router } from "@angular/router";
+import { DeleteComponent } from "../delete/delete.component";
 import { ServerService } from "../services/server.service";
 
 @Component({
@@ -9,8 +12,14 @@ import { ServerService } from "../services/server.service";
 })
 export class SaveComponent implements OnInit {
   list: any;
+  id: any;
 
-  constructor(public server: ServerService, public http: HttpClient) {}
+  constructor(
+    public server: ServerService,
+    public http: HttpClient,
+    public router: Router,
+    public dialog: MatDialog
+  ) {}
 
   getDetails() {
     this.server.getUser().subscribe((res) => {
@@ -19,17 +28,31 @@ export class SaveComponent implements OnInit {
   }
 
   delete(index: any) {
-    this.http
-      .delete<any>(`http://localhost:4000/forms/${index.id}`)
-      .subscribe((res) => {
-        return res;
-      });
-    this.getDetails();
+    const dialogRef = this.dialog.open(DeleteComponent);
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      console.log(`Dialog result: ${result}`);
+      this.http
+        .delete<any>(`http://localhost:4000/forms/${index.id}`)
+        .subscribe((res) => {
+          console.log(res);
+          this.getDetails();
+        });
+    });
   }
 
   formId(index: any) {
-    this.server.preview(index)
-    this.getDetails();
+    let value = JSON.parse(JSON.stringify(index["id"]));
+    this.router.navigate(["/preview"], {
+      queryParams: { val: value },
+    });
+  }
+
+  editId(index: any) {
+    let value = JSON.parse(JSON.stringify(index["id"]));
+    this.router.navigate(["/new-form"], {
+      queryParams: { form: value },
+    });
   }
 
   ngOnInit(): void {

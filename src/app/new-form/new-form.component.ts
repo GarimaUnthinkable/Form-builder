@@ -7,6 +7,9 @@ import {
 import { MatDialog } from "@angular/material/dialog";
 import { DialogComponent } from "../dialog/dialog.component";
 import { ServerService } from "../services/server.service";
+import { ActivatedRoute } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { FormComponent } from "../form/form.component";
 
 @Component({
   selector: "app-new-form",
@@ -14,7 +17,12 @@ import { ServerService } from "../services/server.service";
   styleUrls: ["./new-form.component.css"],
 })
 export class NewFormComponent implements OnInit {
-  constructor(public dialog: MatDialog, public server: ServerService) {}
+  constructor(
+    public dialog: MatDialog,
+    public server: ServerService,
+    public http: HttpClient,
+    public route: ActivatedRoute
+  ) {}
 
   components: any = [
     {
@@ -55,10 +63,11 @@ export class NewFormComponent implements OnInit {
       label: "button",
     },
   ];
-  name:any;
+  name: any;
   obj = {};
   element: any = [];
   button = this.components[4];
+  id: any;
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -122,14 +131,36 @@ export class NewFormComponent implements OnInit {
   }
 
   save() {
-    let newObj = {"formData" : this.element, "formName" : this.name}
-    this.obj = newObj;
-    console.log(this.obj);
-
-    this.server.postUser(this.obj).subscribe((res) => {
-      return res;
+    const ref = this.dialog.open(FormComponent, {
+      width: "500px",
+      data: {
+        name: this.name,
+      },
+    });
+    ref.afterClosed().subscribe((result) => {
+      this.name = result;
+      let newObj = { formData: this.element, formName: this.name };
+      newObj["formName"] = this.name;
+      this.obj = newObj;
+      this.server.postUser(this.obj).subscribe((res) => {
+        return res;
+      });
     });
   }
 
-  ngOnInit(): void {}
+  savedForm() {
+    this.route.queryParams.subscribe((res) => {
+      this.id = res["form"];
+    });
+    this.http
+      .get<any>(`http://localhost:4000/forms/${this.id}`)
+      .subscribe((data) => {
+        this.element = data["formData"];
+        this.name = data["formName"];
+      });
+  }
+
+  ngOnInit(): void {
+    this.savedForm();
+  }
 }

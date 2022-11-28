@@ -22,11 +22,11 @@
     </tr>
   </thead>
   <tbody class="table-group-divider">
-    <tr *ngFor="let index of list">
-      <th scope="row">{{ index.id }}</th>
+    <tr *ngFor="let index of list; let i= index">
+      <th scope="row">{{i+1}}</th>
       <td>{{ index.formName }}</td>
       <td>
-        <button mat-raised-button color="primary" routerLink="/new-form">
+        <button mat-raised-button color="primary" routerLink="/new-form" (click)="editId(index)">
           Edit
         </button>
       </td>
@@ -41,9 +41,7 @@
         </button>
       </td>
       <td>
-        <button mat-raised-button color="warn" (click)="delete(index)">
-          Delete
-        </button>
+        <button mat-raised-button color="warn" (click)="delete(index)">Delete</button>
       </td>
     </tr>
   </tbody>
