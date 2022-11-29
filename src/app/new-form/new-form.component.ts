@@ -136,15 +136,18 @@ export class NewFormComponent implements OnInit {
       data: {
         name: this.name,
       },
+      disableClose: false,
     });
     ref.afterClosed().subscribe((result) => {
-      this.name = result;
-      let newObj = { formData: this.element, formName: this.name };
-      newObj["formName"] = this.name;
-      this.obj = newObj;
-      this.server.postUser(this.obj).subscribe((res) => {
-        return res;
-      });
+      if (result) {
+        this.name = result;
+        let newObj = { formData: this.element, formName: this.name };
+        newObj["formName"] = this.name;
+        this.obj = newObj;
+        this.server.postUser(this.obj).subscribe((res) => {
+          return res;
+        });
+      }
     });
   }
 
@@ -160,7 +163,20 @@ export class NewFormComponent implements OnInit {
       });
   }
 
+  editedForm() {
+    this.route.queryParams.subscribe((res) => {
+      this.id = res["edited"];
+    });
+    this.http
+      .get<any>(`http://localhost:4000/forms/${this.id}`)
+      .subscribe((data) => {
+        this.element = data["formData"];
+        this.name = data["formName"];
+      });
+  }
+
   ngOnInit(): void {
     this.savedForm();
+    this.editedForm();
   }
 }

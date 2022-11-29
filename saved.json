@@ -21,21 +21,33 @@
           "label": "password"
         },
         {
-          "tittle": "Check Box",
-          "type": "input-check",
-          "inputType": "checkBox",
-          "label": "check-box",
-          "displayText": "Check box"
-        },
-        {
           "tittle": "Button",
           "type": "input-button",
           "inputType": "button",
           "label": "button"
         }
       ],
-      "formName": "test2",
+      "formName": "eg",
       "id": 2
+    },
+    {
+      "formData": [
+        {
+          "tittle": "Email",
+          "type": "email",
+          "inputType": "email",
+          "label": "email"
+        },
+        {
+          "tittle": "Check Box",
+          "type": "input-check",
+          "inputType": "checkBox",
+          "label": "check-box",
+          "displayText": "Check box"
+        }
+      ],
+      "formName": "dnd",
+      "id": 3
     }
   ]
 }

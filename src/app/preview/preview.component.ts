@@ -30,6 +30,13 @@ export class PreviewComponent implements OnInit {
       });
   }
 
+  editId() {
+    let value = this.id;
+    this.router.navigate(["/new-form"], {
+      queryParams: { edited: value },
+    });
+  }
+
   ngOnInit(): void {
     this.getInput();
   }

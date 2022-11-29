@@ -1,7 +1,19 @@
 <h1 mat-dialog-title>Are you sure, you want to delete the file?</h1>
-<div mat-dialog-actions>
-  <mat-dialog-actions>
-    <button mat-raised-button color="primary" (click)="noClick()" mat-dialog-close>No</button>
-    <button mat-raised-button color="warn" [mat-dialog-close] *ngIf="true" cdkFocusInitial>Yes</button>
-  </mat-dialog-actions>
-</div>
+<mat-dialog-actions>
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="dialogRef.close(false)"
+    mat-dialog-close
+  >
+    No
+  </button>
+  <button
+    mat-raised-button
+    color="warn"
+    (click)="dialogRef.close(true)"
+    cdkFocusInitial
+  >
+    Yes
+  </button>
+</mat-dialog-actions>

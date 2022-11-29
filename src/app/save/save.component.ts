@@ -28,16 +28,20 @@ export class SaveComponent implements OnInit {
   }
 
   delete(index: any) {
-    const dialogRef = this.dialog.open(DeleteComponent);
+    const dialogRef = this.dialog.open(DeleteComponent, {
+      disableClose: false,
+    });
 
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`Dialog result: ${result}`);
-      this.http
-        .delete<any>(`http://localhost:4000/forms/${index.id}`)
-        .subscribe((res) => {
-          console.log(res);
-          this.getDetails();
-        });
+      if (result) {
+        this.http
+          .delete<any>(`http://localhost:4000/forms/${index.id}`)
+          .subscribe((res) => {
+            console.log(res);
+            this.getDetails();
+          });
+      }
     });
   }
 
