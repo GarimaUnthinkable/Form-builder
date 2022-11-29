@@ -48,6 +48,36 @@
       ],
       "formName": "dnd",
       "id": 3
+    },
+    {
+      "formData": [
+        {
+          "tittle": "Text",
+          "type": "input-text",
+          "inputType": "text",
+          "label": "text"
+        },
+        {
+          "tittle": "Email",
+          "type": "email",
+          "inputType": "email",
+          "label": "email"
+        },
+        {
+          "tittle": "Password",
+          "type": "input-password",
+          "inputType": "password",
+          "label": "password"
+        },
+        {
+          "tittle": "Button",
+          "type": "input-button",
+          "inputType": "button",
+          "label": "button"
+        }
+      ],
+      "formName": "example",
+      "id": 4
     }
   ]
 }

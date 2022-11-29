@@ -23,4 +23,12 @@ export class ServerService {
       })
     );
   }
+
+  updateUser(store: any, id: number) {
+    return this.http.put<any>("http://localhost:4000/all" + id, store).pipe(
+      map((res: any) => {
+        return res;
+      })
+    );
+  }
 }
