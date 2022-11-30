@@ -7,7 +7,7 @@ import {
 import { MatDialog } from "@angular/material/dialog";
 import { DialogComponent } from "../dialog/dialog.component";
 import { ServerService } from "../services/server.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, TitleStrategy } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { FormComponent } from "../form/form.component";
 
@@ -88,7 +88,6 @@ export class NewFormComponent implements OnInit {
 
   remove(index: any) {
     let val = this.element.indexOf(index);
-    console.log(val);
     this.element.splice(val, 1);
   }
 
@@ -139,16 +138,57 @@ export class NewFormComponent implements OnInit {
       disableClose: false,
     });
     ref.afterClosed().subscribe((result) => {
-      if (result) {
-        this.name = result;
-        let newObj = { formData: this.element, formName: this.name };
-        newObj["formName"] = this.name;
-        this.obj = newObj;
-        this.server.postUser(this.obj).subscribe((res) => {
-          return res;
-        });
+      if (!this.element) {
+        if (result) {
+          this.name = result;
+          let newObj = { formData: this.element, formName: this.name };
+          newObj["formName"] = this.name;
+          this.obj = newObj;
+          this.server.postUser(this.obj).subscribe((res) => {
+            return res;
+          });
+        }
+      } else {
+        this.update();
+        this.updated();
       }
     });
+  }
+
+  update() {
+    this.route.queryParams.subscribe((res) => {
+      this.id = res["form"];
+    });
+    this.http
+      .get<any>(`http://localhost:4000/forms/${this.id}`)
+      .subscribe((data) => {
+        this.server.updateUser(this.element, data["id"]).subscribe((res) => {
+          this.element = res[0];
+        });
+        let newObj = { formData: this.element, formName: this.name };
+        this.obj = newObj;
+        this.server.updateUser(this.obj, data["id"]).subscribe((newData) => {
+          return newData;
+        });
+      });
+  }
+
+  updated() {
+    this.route.queryParams.subscribe((res) => {
+      this.id = res["edited"];
+    });
+    this.http
+      .get<any>(`http://localhost:4000/forms/${this.id}`)
+      .subscribe((data) => {
+        this.server.updateUser([this.element], data["id"]).subscribe((res) => {
+          this.element = res[0];
+        });
+        let newObj = { formData: this.element, formName: this.name };
+        this.obj = newObj;
+        this.server.updateUser(this.obj, data["id"]).subscribe((newData) => {
+          return newData;
+        });
+      });
   }
 
   savedForm() {

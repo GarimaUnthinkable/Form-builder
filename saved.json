@@ -1,83 +1,155 @@
 {
   "forms": [
     {
+      "0": {
+        "tittle": "Email",
+        "type": "email",
+        "inputType": "email",
+        "label": "Email"
+      },
+      "1": {
+        "tittle": "Password",
+        "type": "input-password",
+        "inputType": "password",
+        "label": "Password"
+      },
+      "2": {
+        "tittle": "Check Box",
+        "type": "input-check",
+        "inputType": "checkBox",
+        "label": "Remember me?",
+        "displayText": "Check box"
+      },
+      "3": {
+        "tittle": "Button",
+        "type": "input-button",
+        "inputType": "button",
+        "label": "Submit"
+      },
       "formData": [
-        {
-          "tittle": "Text",
-          "type": "input-text",
-          "inputType": "text",
-          "label": "text"
-        },
         {
           "tittle": "Email",
           "type": "email",
           "inputType": "email",
-          "label": "email"
+          "label": "Email"
         },
         {
           "tittle": "Password",
           "type": "input-password",
           "inputType": "password",
-          "label": "password"
-        },
-        {
-          "tittle": "Button",
-          "type": "input-button",
-          "inputType": "button",
-          "label": "button"
-        }
-      ],
-      "formName": "eg",
-      "id": 2
-    },
-    {
-      "formData": [
-        {
-          "tittle": "Email",
-          "type": "email",
-          "inputType": "email",
-          "label": "email"
+          "label": "Password"
         },
         {
           "tittle": "Check Box",
           "type": "input-check",
           "inputType": "checkBox",
-          "label": "check-box",
+          "label": "Remember me?",
           "displayText": "Check box"
-        }
-      ],
-      "formName": "dnd",
-      "id": 3
-    },
-    {
-      "formData": [
-        {
-          "tittle": "Text",
-          "type": "input-text",
-          "inputType": "text",
-          "label": "text"
-        },
-        {
-          "tittle": "Email",
-          "type": "email",
-          "inputType": "email",
-          "label": "email"
-        },
-        {
-          "tittle": "Password",
-          "type": "input-password",
-          "inputType": "password",
-          "label": "password"
         },
         {
           "tittle": "Button",
           "type": "input-button",
           "inputType": "button",
-          "label": "button"
+          "label": "Submit"
         }
       ],
-      "formName": "example",
-      "id": 4
+      "formName": "test",
+      "id": 1
+    },
+    {
+      "0": [
+        {
+          "tittle": "Text",
+          "type": "input-text",
+          "inputType": "text",
+          "label": "Name"
+        },
+        {
+          "tittle": "Email",
+          "type": "email",
+          "inputType": "email",
+          "label": "Email"
+        },
+        {
+          "tittle": "Password",
+          "type": "input-password",
+          "inputType": "password",
+          "label": "Password"
+        },
+        {
+          "tittle": "Check Box",
+          "type": "input-check",
+          "inputType": "checkBox",
+          "label": "Robot?",
+          "displayText": "Check box"
+        },
+        {
+          "tittle": "Button",
+          "type": "input-button",
+          "inputType": "button",
+          "label": "Submit"
+        }
+      ],
+      "1": {
+        "tittle": "Email",
+        "type": "email",
+        "inputType": "email",
+        "label": "Email"
+      },
+      "2": {
+        "tittle": "Password",
+        "type": "input-password",
+        "inputType": "password",
+        "label": "Password"
+      },
+      "3": {
+        "tittle": "Check Box",
+        "type": "input-check",
+        "inputType": "checkBox",
+        "label": "robot?",
+        "displayText": "Check box"
+      },
+      "4": {
+        "tittle": "Button",
+        "type": "input-button",
+        "inputType": "button",
+        "label": "Submit"
+      },
+      "formData": [
+        {
+          "tittle": "Text",
+          "type": "input-text",
+          "inputType": "text",
+          "label": "Name"
+        },
+        {
+          "tittle": "Email",
+          "type": "email",
+          "inputType": "email",
+          "label": "Email"
+        },
+        {
+          "tittle": "Password",
+          "type": "input-password",
+          "inputType": "password",
+          "label": "Password"
+        },
+        {
+          "tittle": "Check Box",
+          "type": "input-check",
+          "inputType": "checkBox",
+          "label": "Robot?",
+          "displayText": "Check box"
+        },
+        {
+          "tittle": "Button",
+          "type": "input-button",
+          "inputType": "button",
+          "label": "Submit"
+        }
+      ],
+      "formName": "tested",
+      "id": 3
     }
   ]
 }

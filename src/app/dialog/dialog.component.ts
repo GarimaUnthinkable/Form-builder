@@ -19,7 +19,6 @@ export class DialogComponent {
   ) {}
 
   onNoClick(): void {
-    console.log(this.label);
     this.dialogRef.close();
   }
 }

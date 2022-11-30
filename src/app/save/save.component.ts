@@ -33,12 +33,10 @@ export class SaveComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(`Dialog result: ${result}`);
       if (result) {
         this.http
           .delete<any>(`http://localhost:4000/forms/${index.id}`)
           .subscribe((res) => {
-            console.log(res);
             this.getDetails();
           });
       }
