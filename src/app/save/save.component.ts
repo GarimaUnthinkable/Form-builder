@@ -51,7 +51,7 @@ export class SaveComponent implements OnInit {
   }
 
   editId(index: any) {
-    let value = JSON.parse(JSON.stringify(index["id"]));
+    let value = index["id"];
     this.router.navigate(["/new-form"], {
       queryParams: { form: value },
     });

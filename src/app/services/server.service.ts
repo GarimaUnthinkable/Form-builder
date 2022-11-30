@@ -8,8 +8,8 @@ import { map } from "rxjs/operators";
 export class ServerService {
   constructor(private http: HttpClient) {}
 
-  postUser(store: any) {
-    return this.http.post<any>("http://localhost:4000/forms", store).pipe(
+  postUser(formData: any) {
+    return this.http.post<any>("http://localhost:4000/forms", formData).pipe(
       map((response: any) => {
         return response;
       })
@@ -24,8 +24,8 @@ export class ServerService {
     );
   }
 
-  updateUser(store: any, id: number) {
-    return this.http.patch<any>("http://localhost:4000/forms/" + id, store).pipe(
+  updateUser(formData: any, id: number) {
+    return this.http.patch<any>("http://localhost:4000/forms/" + id, formData).pipe(
       map((res: any) => {
         return res;
       })

@@ -138,85 +138,43 @@ export class NewFormComponent implements OnInit {
       disableClose: false,
     });
     ref.afterClosed().subscribe((result) => {
-      if (!this.element) {
+      if (this.element) {
         if (result) {
           this.name = result;
           let newObj = { formData: this.element, formName: this.name };
           newObj["formName"] = this.name;
           this.obj = newObj;
-          this.server.postUser(this.obj).subscribe((res) => {
-            return res;
-          });
+          if (result == null) {
+            this.server.postUser(this.obj).subscribe((res) => {
+              return res;
+            });
+          } else {
+            this.server.updateUser(this.obj, this.id).subscribe((res) => {
+              console.log("updated", res);
+            });
+          }
         }
-      } else {
-        this.update();
-        this.updated();
       }
     });
   }
 
-  update() {
-    this.route.queryParams.subscribe((res) => {
-      this.id = res["form"];
-    });
-    this.http
-      .get<any>(`http://localhost:4000/forms/${this.id}`)
-      .subscribe((data) => {
-        this.server.updateUser(this.element, data["id"]).subscribe((res) => {
-          this.element = res[0];
-        });
-        let newObj = { formData: this.element, formName: this.name };
-        this.obj = newObj;
-        this.server.updateUser(this.obj, data["id"]).subscribe((newData) => {
-          return newData;
-        });
-      });
-  }
-
-  updated() {
-    this.route.queryParams.subscribe((res) => {
-      this.id = res["edited"];
-    });
-    this.http
-      .get<any>(`http://localhost:4000/forms/${this.id}`)
-      .subscribe((data) => {
-        this.server.updateUser([this.element], data["id"]).subscribe((res) => {
-          this.element = res[0];
-        });
-        let newObj = { formData: this.element, formName: this.name };
-        this.obj = newObj;
-        this.server.updateUser(this.obj, data["id"]).subscribe((newData) => {
-          return newData;
-        });
-      });
-  }
-
   savedForm() {
     this.route.queryParams.subscribe((res) => {
-      this.id = res["form"];
+      if ("form" in res) {
+        this.id = res["form"];
+      } else {
+        this.id = res["edited"];
+      }
+      this.http
+        .get<any>(`http://localhost:4000/forms/${this.id}`)
+        .subscribe((data) => {
+          this.element = data["formData"];
+          this.name = data["formName"];
+        });
     });
-    this.http
-      .get<any>(`http://localhost:4000/forms/${this.id}`)
-      .subscribe((data) => {
-        this.element = data["formData"];
-        this.name = data["formName"];
-      });
-  }
-
-  editedForm() {
-    this.route.queryParams.subscribe((res) => {
-      this.id = res["edited"];
-    });
-    this.http
-      .get<any>(`http://localhost:4000/forms/${this.id}`)
-      .subscribe((data) => {
-        this.element = data["formData"];
-        this.name = data["formName"];
-      });
   }
 
   ngOnInit(): void {
     this.savedForm();
-    this.editedForm();
   }
 }
