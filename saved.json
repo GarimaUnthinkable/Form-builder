@@ -6,11 +6,47 @@
           "tittle": "Text",
           "type": "input-text",
           "inputType": "text",
-          "label": "Name"
+          "label": "textmnhh"
+        },
+        {
+          "tittle": "Password",
+          "type": "input-password",
+          "inputType": "password",
+          "label": "password"
+        },
+        {
+          "tittle": "Button",
+          "type": "input-button",
+          "inputType": "button",
+          "label": "button"
+        },
+        {
+          "tittle": "Email",
+          "type": "email",
+          "inputType": "email",
+          "label": "email"
+        },
+        {
+          "tittle": "Number",
+          "type": "input-number",
+          "inputType": "number",
+          "label": "number"
+        },
+        {
+          "tittle": "Email",
+          "type": "email",
+          "inputType": "email",
+          "label": "email"
+        },
+        {
+          "tittle": "Email",
+          "type": "email",
+          "inputType": "email",
+          "label": "email"
         }
       ],
-      "formName": "test-1",
-      "id": 1
+      "formName": "testform12366",
+      "id": 2
     },
     {
       "formData": [
@@ -27,8 +63,8 @@
           "label": "password"
         }
       ],
-      "formName": "example-1",
-      "id": 2
+      "formName": "tested",
+      "id": 3
     }
   ]
 }

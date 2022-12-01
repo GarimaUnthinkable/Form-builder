@@ -7,7 +7,7 @@ import {
 import { MatDialog } from "@angular/material/dialog";
 import { DialogComponent } from "../dialog/dialog.component";
 import { ServerService } from "../services/server.service";
-import { ActivatedRoute, TitleStrategy } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { FormComponent } from "../form/form.component";
 
@@ -21,7 +21,8 @@ export class NewFormComponent implements OnInit {
     public dialog: MatDialog,
     public server: ServerService,
     public http: HttpClient,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public router: Router
   ) {}
 
   components: any = [
@@ -137,20 +138,24 @@ export class NewFormComponent implements OnInit {
       },
       disableClose: false,
     });
+
     ref.afterClosed().subscribe((result) => {
       if (this.element) {
         if (result) {
           this.name = result;
           let newObj = { formData: this.element, formName: this.name };
-          newObj["formName"] = this.name;
           this.obj = newObj;
-          if (result == null) {
+          if (this.id == undefined || this.name in this.obj) {
             this.server.postUser(this.obj).subscribe((res) => {
-              return res;
+              this.router.navigate(["/new-form"]).then(() => {
+                this.element = [];
+              });
             });
           } else {
             this.server.updateUser(this.obj, this.id).subscribe((res) => {
-              console.log("updated", res);
+              this.router.navigate(["/new-form"]).then(() => {
+                this.element = [];
+              });
             });
           }
         }
