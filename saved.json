@@ -3,68 +3,26 @@
     {
       "formData": [
         {
-          "tittle": "Text",
-          "type": "input-text",
-          "inputType": "text",
-          "label": "textmnhh"
+          "tittle": "Email",
+          "type": "email",
+          "inputType": "email",
+          "label": "Email"
         },
         {
           "tittle": "Password",
           "type": "input-password",
           "inputType": "password",
-          "label": "password"
+          "label": "Password"
         },
         {
           "tittle": "Button",
           "type": "input-button",
           "inputType": "button",
-          "label": "button"
-        },
-        {
-          "tittle": "Email",
-          "type": "email",
-          "inputType": "email",
-          "label": "email"
-        },
-        {
-          "tittle": "Number",
-          "type": "input-number",
-          "inputType": "number",
-          "label": "number"
-        },
-        {
-          "tittle": "Email",
-          "type": "email",
-          "inputType": "email",
-          "label": "email"
-        },
-        {
-          "tittle": "Email",
-          "type": "email",
-          "inputType": "email",
-          "label": "email"
+          "label": "Login"
         }
       ],
-      "formName": "testform12366",
-      "id": 2
-    },
-    {
-      "formData": [
-        {
-          "tittle": "Text",
-          "type": "input-text",
-          "inputType": "text",
-          "label": "email"
-        },
-        {
-          "tittle": "Password",
-          "type": "input-password",
-          "inputType": "password",
-          "label": "password"
-        }
-      ],
-      "formName": "tested",
-      "id": 3
+      "formName": "Form -- 1",
+      "id": 1
     }
   ]
 }
