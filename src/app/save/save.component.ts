@@ -21,13 +21,13 @@ export class SaveComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  getDetails() {
+  formDetails() {
     this.server.getUser().subscribe((res) => {
       this.list = res;
     });
   }
 
-  delete(index: any) {
+  delete(deleteId: any) {
     const dialogRef = this.dialog.open(DeleteComponent, {
       disableClose: false,
     });
@@ -35,29 +35,29 @@ export class SaveComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
         this.http
-          .delete<any>(`http://localhost:4000/forms/${index.id}`)
+          .delete<any>(`http://localhost:4000/forms/${deleteId.id}`)
           .subscribe((res) => {
-            this.getDetails();
+            this.formDetails();
           });
       }
     });
   }
 
-  formId(index: any) {
-    let value = JSON.parse(JSON.stringify(index["id"]));
+  previewForm(previewId: any) {
+    let value = JSON.parse(JSON.stringify(previewId["id"]));
     this.router.navigate(["/preview"], {
       queryParams: { val: value },
     });
   }
 
-  editId(index: any) {
-    let value = index["id"];
+  editForm(editId: any) {
+    let value = editId["id"];
     this.router.navigate(["/new-form"], {
       queryParams: { form: value },
     });
   }
 
   ngOnInit(): void {
-    this.getDetails();
+    this.formDetails();
   }
 }

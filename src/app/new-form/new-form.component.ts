@@ -25,7 +25,7 @@ export class NewFormComponent implements OnInit {
     public router: Router
   ) {}
 
-  components: any = [
+  allFiels: any = [
     {
       tittle: "Text",
       type: "input-text",
@@ -67,8 +67,8 @@ export class NewFormComponent implements OnInit {
   name: any;
   obj = {};
   element: any = [];
-  button = this.components[4];
-  id: any;
+  button = this.allFiels[4];
+  objectId: any;
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -87,8 +87,8 @@ export class NewFormComponent implements OnInit {
     }
   }
 
-  remove(index: any) {
-    let val = this.element.indexOf(index);
+  remove(removeId: any) {
+    let val = this.element.indexOf(removeId);
     this.element.splice(val, 1);
   }
 
@@ -101,32 +101,32 @@ export class NewFormComponent implements OnInit {
     ) {
       return (
         '<input type="' +
-        this.components[html].inputType +
+        this.allFiels[html].inputType +
         '" placeholder= "' +
-        this.components[html].label +
+        this.allFiels[html].label +
         '"/>'
       );
     } else {
       return (
         '<button type="' +
-        this.components[html].inputType +
+        this.allFiels[html].inputType +
         '"> "' +
-        this.components[html].label +
+        this.allFiels[html].label +
         '"</button>'
       );
     }
   }
 
-  edit(index: any) {
+  edit(editId: any) {
     const ref = this.dialog.open(DialogComponent, {
       width: "500px",
       data: {
-        label: index.label,
+        label: editId.label,
       },
     });
     ref.afterClosed().subscribe((result) => {
-      index.label = result;
-      this.element.splice(index.label, result);
+      editId.label = result;
+      this.element.splice(editId.label, result);
     });
   }
 
@@ -145,14 +145,14 @@ export class NewFormComponent implements OnInit {
           this.name = result;
           let newObj = { formData: this.element, formName: this.name };
           this.obj = newObj;
-          if (this.id == undefined || this.name in this.obj) {
+          if (this.objectId == undefined || this.name in this.obj) {
             this.server.postUser(this.obj).subscribe((res) => {
               this.router.navigate(["/new-form"]).then(() => {
                 this.element = [];
               });
             });
           } else {
-            this.server.updateUser(this.obj, this.id).subscribe((res) => {
+            this.server.updateUser(this.obj, this.objectId).subscribe((res) => {
               this.router.navigate(["/new-form"]).then(() => {
                 this.element = [];
               });
@@ -163,15 +163,15 @@ export class NewFormComponent implements OnInit {
     });
   }
 
-  savedForm() {
+  editForm() {
     this.route.queryParams.subscribe((res) => {
       if ("form" in res) {
-        this.id = res["form"];
+        this.objectId = res["form"];
       } else {
-        this.id = res["edited"];
+        this.objectId = res["edited"];
       }
       this.http
-        .get<any>(`http://localhost:4000/forms/${this.id}`)
+        .get<any>(`http://localhost:4000/forms/${this.objectId}`)
         .subscribe((data) => {
           this.element = data["formData"];
           this.name = data["formName"];
@@ -180,6 +180,6 @@ export class NewFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.savedForm();
+    this.editForm();
   }
 }

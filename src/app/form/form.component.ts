@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 export interface data {
-  name: any;
+  formName: any;
 }
 
 @Component({
@@ -11,7 +11,7 @@ export interface data {
   styleUrls: ["./form.component.css"],
 })
 export class FormComponent implements OnInit {
-  name: any = "";
+  formName: any = "";
 
   constructor(
     public dialogRef: MatDialogRef<FormComponent>,

@@ -6,7 +6,7 @@
         <mat-label style="text-align: center" for="data.label"
           >e.g.-xyz</mat-label
         >
-        <input id="name" matInput [(ngModel)]="data.name" />
+        <input id="name" matInput [(ngModel)]="data.formName" />
       </mat-form-field>
     </div>
     <mat-dialog-actions>
@@ -23,7 +23,7 @@
         required
         mat-raised-button
         color="primary"
-        (click)="dialogRef.close(data.name)"
+        (click)="dialogRef.close(data.formName)"
         cdkFocusInitial
       >
         Save

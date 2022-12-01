@@ -6,8 +6,8 @@
     <h1 style="text-align: center; margin-left: 115px;">Form Inputs</h1>
     <div mat-dialog-content style="text-align: center; margin-left: 115px;">
       <mat-form-field>
-        <mat-label style="text-align: center" for="data.label">Label</mat-label>
-        <input id="label" matInput [(ngModel)]="data.label" />
+        <mat-label style="text-align: center" for="data.inputLabel">Label</mat-label>
+        <input id="label" matInput [(ngModel)]="data.inputLabel" />
       </mat-form-field>
     </div>
     <div style="margin-left: 150px" mat-dialog-actions>
@@ -16,7 +16,7 @@
       </button>
       <button
         mat-raised-button
-        [mat-dialog-close]="data.label"
+        [mat-dialog-close]="data.inputLabel"
         color="primary"
         cdkFocusInitial
       >

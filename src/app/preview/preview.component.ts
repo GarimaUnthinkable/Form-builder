@@ -16,22 +16,22 @@ export class PreviewComponent implements OnInit {
     public router: Router
   ) {}
 
-  elements: any;
-  id: any;
+  inputs: any;
+  inputId: any;
 
   getInput() {
     this.route.queryParams.subscribe((res) => {
-      this.id = res["val"];
+      this.inputId = res["val"];
     });
     this.http
-      .get<any>(`http://localhost:4000/forms/${this.id}`)
+      .get<any>(`http://localhost:4000/forms/${this.inputId}`)
       .subscribe((data) => {
-        this.elements = data["formData"];
+        this.inputs = data["formData"];
       });
   }
 
   editId() {
-    let value = this.id;
+    let value = this.inputId;
     this.router.navigate(["/new-form"], {
       queryParams: { edited: value },
     });

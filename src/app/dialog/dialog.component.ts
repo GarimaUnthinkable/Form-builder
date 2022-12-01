@@ -2,7 +2,7 @@ import { Component, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 
 export interface data {
-  label: any;
+  inputLabel: any;
 }
 @Component({
   selector: "app-dialog",
@@ -11,7 +11,7 @@ export interface data {
 })
 
 export class DialogComponent {
-  label:any = '';
+  inputLabel:any = '';
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,

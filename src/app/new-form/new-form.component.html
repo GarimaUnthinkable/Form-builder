@@ -11,12 +11,13 @@
           cdkDropList
           cdkDragData
           (cdkDropListDropped)="drop($event)"
-          [cdkDropListData]="components"
+          [cdkDropListData]="allFiels"
           class="example-list"
           cdkDropListSortingDisabled
         >
-          <div class="example-box" *ngFor="let item of components" cdkDrag>
-            {{ item.tittle }}
+        <!-- Component fields -->
+          <div class="example-box" *ngFor="let fields of allFiels" cdkDrag>
+            {{ fields.tittle }}
           </div>
         </div>
       </div>
@@ -31,39 +32,40 @@
         class="example-list1"
         (cdkDropListDropped)="drop($event)"
       >
-        <div class="example-box1" *ngFor="let index of element" cdkDrag>
+      <!-- dragged new inputs to make a form -->
+        <div class="example-box1" *ngFor="let inputs of element" cdkDrag>
           <div
             class="container"
             style="display: flex; border: 5px; color: black; padding: 5px"
           >
             <div>
               <input
-                type="{{ index.inputType }}"
-                *ngIf="index.inputType != 'button'"
-                placeholder="{{ index.label }}"
+                type="{{ inputs.inputType }}"
+                *ngIf="inputs.inputType != 'button'"
+                placeholder="{{ inputs.label }}"
               />
             </div>
             <div style="margin-left: 5px">
-              <label *ngIf="index.inputType == 'checkBox'" for="">{{
-                index.label
+              <label *ngIf="inputs.inputType == 'checkBox'" for="">{{
+                inputs.label
               }}</label>
             </div>
             <div>
               <button
                 mat-raised-button
                 color="primary"
-                *ngIf="index.inputType == 'button'"
+                *ngIf="inputs.inputType == 'button'"
               >
-                {{ index.label }}
+                {{ inputs.label }}
               </button>
             </div>
           </div>
           <div class="container">
-            <button mat-button (click)="edit(index)">
+            <button mat-button (click)="edit(inputs)">
               <mat-icon color="primary">edit</mat-icon>
             </button>
             <button style="margin-left: 5px" mat-button>
-              <mat-icon color="warn" (click)="remove(index)">delete</mat-icon>
+              <mat-icon color="warn" (click)="remove(inputs)">delete</mat-icon>
             </button>
           </div>
         </div>
