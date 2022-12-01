@@ -1,0 +1,48 @@
+<h2 style="margin-left: 600px; margin-top: 20px">
+  <b><i>All Forms</i></b>
+</h2>
+<br />
+<table class="table" style="margin: 20px; margin-left: 130px">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Form name</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Preview</th>
+      <th scope="col">Delete</th>
+      <button
+        scope="col"
+        mat-raised-button
+        color="primary"
+        style="margin-left: 10px"
+        routerLink="/new-form"
+      >
+        Create new form
+      </button>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <tr *ngFor="let index of list; let serialNo= index">
+      <th scope="row">{{serialNo+1}}</th>
+      <td>{{ index.formName }}</td>
+      <td>
+        <button mat-raised-button color="primary" routerLink="/new-form" (click)="editForm(index)">
+          Edit
+        </button>
+      </td>
+      <td>
+        <button
+          mat-raised-button
+          color="accent"
+          routerLink="/preview"
+          (click)="previewForm(index)"
+        >
+          View Form
+        </button>
+      </td>
+      <td>
+        <button mat-raised-button color="warn" (click)="delete(index)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

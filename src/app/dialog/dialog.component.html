@@ -1,22 +1,22 @@
 <div
   class="container"
-  style="display: flex; border: 5px; color: black; margin-left: 120px"
+  style="display: flex; border: 5px; color: black;"
 >
   <div>
-    <h1 style="text-align: center">Form Inputs</h1>
-    <div mat-dialog-content>
+    <h1 style="text-align: center; margin-left: 115px;">Form Inputs</h1>
+    <div mat-dialog-content style="text-align: center; margin-left: 115px;">
       <mat-form-field>
-        <mat-label style="text-align: center" for="data.label">Label</mat-label>
-        <input id="label" matInput [(ngModel)]="data.label" />
+        <mat-label style="text-align: center" for="data.inputLabel">Label</mat-label>
+        <input id="label" matInput [(ngModel)]="data.inputLabel" />
       </mat-form-field>
     </div>
-    <div style="margin-left: 30px" mat-dialog-actions>
+    <div style="margin-left: 150px" mat-dialog-actions>
       <button mat-raised-button (click)="onNoClick()" color="warn">
         Cancel
       </button>
       <button
         mat-raised-button
-        [mat-dialog-close]="data.label"
+        [mat-dialog-close]="data.inputLabel"
         color="primary"
         cdkFocusInitial
       >

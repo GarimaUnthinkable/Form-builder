@@ -1,0 +1,33 @@
+<div class="container" style="display: flex; border: 5px; color: black">
+  <div>
+    <h1 style="text-align: center; margin-left: 110px">Form Name</h1>
+    <div mat-dialog-content style="text-align: center; margin-left: 110px">
+      <mat-form-field>
+        <mat-label style="text-align: center" for="data.label"
+          >e.g.-xyz</mat-label
+        >
+        <input id="name" matInput [(ngModel)]="data.formName" />
+      </mat-form-field>
+    </div>
+    <mat-dialog-actions>
+      <button
+        style="margin-left: 145px"
+        mat-raised-button
+        color="warn"
+        (click)="dialogRef.close(false)"
+        mat-dialog-close
+      >
+        Cancel
+      </button>
+      <button
+        required
+        mat-raised-button
+        color="primary"
+        (click)="dialogRef.close(data.formName)"
+        cdkFocusInitial
+      >
+        Save
+      </button>
+    </mat-dialog-actions>
+  </div>
+</div>
