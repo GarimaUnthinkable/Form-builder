@@ -121,7 +121,7 @@ export class NewFormComponent implements OnInit {
     const ref = this.dialog.open(DialogComponent, {
       width: "500px",
       data: {
-        label: editId.label,
+        inputLabel: editId.label,
       },
     });
     ref.afterClosed().subscribe((result) => {
@@ -134,7 +134,7 @@ export class NewFormComponent implements OnInit {
     const ref = this.dialog.open(FormComponent, {
       width: "500px",
       data: {
-        name: this.name,
+        formName: this.name,
       },
       disableClose: false,
     });
